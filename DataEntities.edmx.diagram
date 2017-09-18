@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9815746fa558411588ab370ebcb8e8b0" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="CANSnatcherModel.AccessLog" Width="1.5" PointX="9.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AppUser" Width="1.5" PointX="7.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Attribute" Width="1.5" PointX="9.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Candidate" Width="1.5" PointX="7.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Contact" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Email" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Facility" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.JobOrder" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Note" Width="1.5" PointX="9.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Person" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Phone" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Setting" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Street_Address" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.Submission" Width="1.5" PointX="12.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.UniqueID" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.AddressView" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.CandidateView" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.ContactView" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.FacilityView" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.JobOrderView" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.PhoneView" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.SubmissionView" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CANSnatcherModel.UserView" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CANSnatcherModel.AccessLog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Notes_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Settings_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Submission_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.User_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Attribute_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Candidate_holder_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Person_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Contact_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Contact_UniqueID" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Email_UniqueID" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Facility_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.JobOrder_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.UniqueID_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Submission_JobOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.UniqueID_JobOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Noted_UniqueID" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.UniqueID_Notes" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.UniqueID_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Address_holder" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="CANSnatcherModel.Phone_holder" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

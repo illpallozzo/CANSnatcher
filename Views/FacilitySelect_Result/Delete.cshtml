@@ -1,0 +1,99 @@
+﻿@model CANSnatcher.FacilitySelect_Result
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Working/_working_layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+<br />    <hr />
+    <dl class="dl-horizontal">
+        
+        @Html.HiddenFor(model => model.C_Id)
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent__Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent__Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STREET)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STREET)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_STATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_STATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZIP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

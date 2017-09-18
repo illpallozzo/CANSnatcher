@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CANSnatcher.JobOrderView>
+
+@{
+    ViewBag.Title = "Job Orders";
+    Layout = "~/Views/Working/_working_layout.cshtml";
+}
+
+<br />
+<br />
+
+<hr />
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JO_START_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JO_STATUS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JO_DESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facility__Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facility_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.TITLE)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.RATE)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.JO_START_DATE)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.JO_STATUS)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.JO_DESCRIPTION)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.Facility__Id)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "JobOrders", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.Facility_NAME)
+        </td>
+        <td>
+            <input type="button" class="btn-default btn" value="Submit Candidate" onclick="location.href='@Url.Action("Create", "Submissions", new {jo = item.C_Id, can = 0 })'" />
+        </td>
+    </tr>
+}
+
+</table>

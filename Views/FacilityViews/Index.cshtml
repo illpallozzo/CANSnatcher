@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CANSnatcher.FacilityView>
+
+@{
+    ViewBag.Title = "Facilities";
+    Layout = "~/Views/Working/_working_layout.cshtml";
+}
+
+<br /><br />
+
+<p>
+    <button class="btn-link" onclick="location.href='@Url.Action("Create", "FacilitySelect_Result", null, null)'">New Facility</button>
+</p>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_NUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STREET)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parent_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.PHONE_NUMBER)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.STREET)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.CITY)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.ZIP)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit","FacilitySelect_Result", new {id = item.C_Id}, null)'" >
+            @Html.DisplayFor(modelItem => item.Parent_NAME)
+        </td>
+        <td>
+            <input type="button" class="btn-default btn" value="JOCreate" onclick="location.href='@Url.Action("Create", "JobOrders", new {id = item.C_Id })'"/>
+        </td>
+    </tr>
+}
+
+</table>

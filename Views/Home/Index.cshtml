@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+}
+
+<div class="jumbotron">
+    <h1>Get the provider or position you need with CAN</h1>
+    <p class="lead">To learn about how a CAN do attitude will improve your chances of filling critical
+            clinic hours, fill out a profile in the <a href="~/Account/Register.cshtml">registration</a> page and we will contact you.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Always hiring</h2>
+        <p>
+            @ViewBag.MessageLeft
+        </p>
+        <p><a class="btn btn-default" href="~/Account/Register.cshtml">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get away this weekend</h2>
+        <p>@ViewBag.MessageCenter</p>
+        <p><a class="btn btn-default" href="~/Account/Register.cshtml">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Still looking?</h2>
+        <p>@ViewBag.MessageRight</p>
+        <p><a class="btn btn-default" href="~/Account/Register.cshtml">Learn more &raquo;</a></p>
+    </div>
+</div>

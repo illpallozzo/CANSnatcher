@@ -1,0 +1,2424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CANSnatcherModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessLog">
+          <Key>
+            <PropertyRef Name="_Id" />
+            <PropertyRef Name="timestamp" />
+            <PropertyRef Name="User__Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="User__Id" Type="int" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Address_holder">
+          <Key>
+            <PropertyRef Name="Address__Id" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="Address__Id" Type="int" Nullable="false" />
+          <Property Name="Owner__Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Person__Id" />
+          </Key>
+          <Property Name="Person__Id" Type="int" Nullable="false" />
+          <Property Name="ULEVEL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="_Id" />
+            <PropertyRef Name="Candidate__Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ATT_TYPE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="SUB_TYPE" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Person__Id" />
+          </Key>
+          <Property Name="Person__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CAN_STATUS" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contact__Id" Type="int" Nullable="false" />
+          <Property Name="ContactFor__Id" Type="int" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="_Id" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Owner__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Parent__Id" Type="int" />
+        </EntityType>
+        <EntityType Name="JobOrder">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="RATE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="JO_START_DATE" Type="date" Nullable="false" />
+          <Property Name="JO_STATUS" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="JO_DESCRIPTION" Type="char" MaxLength="400" />
+          <Property Name="Facility__Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="Taker__Id" />
+            <PropertyRef Name="Noted__Id" />
+            <PropertyRef Name="SHARED" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="Taker__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Noted__Id" Type="int" Nullable="false" />
+          <Property Name="NOTE" Type="char" MaxLength="400" Nullable="false" />
+          <Property Name="SHARED" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="FNAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MNAME" Type="varchar" MaxLength="30" />
+          <Property Name="LNAME" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PHONE_NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Phone_holder">
+          <Key>
+            <PropertyRef Name="Phone__Id" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="Phone__Id" Type="int" Nullable="false" />
+          <Property Name="Owner__Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="_Id" />
+            <PropertyRef Name="User__Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User__Id" Type="int" Nullable="false" />
+          <Property Name="SETTING" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SETTING_VALUE" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street_Address">
+          <Key>
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="STREET" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ADDRESS_STATE" Type="varchar" MaxLength="40" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Submission">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="JobOrder__Id" />
+            <PropertyRef Name="Candidate__Id" />
+            <PropertyRef Name="SubmissionBy__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="JobOrder__Id" Type="int" Nullable="false" />
+          <Property Name="Candidate__Id" Type="int" Nullable="false" />
+          <Property Name="SubmissionBy__Id" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="SUBMISSION_DATE" Type="date" Nullable="false" />
+          <Property Name="BILL_RATE" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="UniqueID">
+          <Key>
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.AddressView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AddressView">
+          <Key>
+            <PropertyRef Name="STREET" />
+            <PropertyRef Name="CITY" />
+            <PropertyRef Name="ZIP" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="STREET" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ADDRESS_STATE" Type="varchar" MaxLength="40" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Owner__Id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.CandidateView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CandidateView">
+          <Key>
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" Nullable="false" />
+          <Property Name="FNAME" Type="varchar" MaxLength="30" />
+          <Property Name="MNAME" Type="varchar" MaxLength="30" />
+          <Property Name="LNAME" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="CAN_STATUS" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.ContactView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ContactView">
+          <Key>
+            <PropertyRef Name="_Id" />
+            <PropertyRef Name="IDENTIFIER" />
+          </Key>
+          <Property Name="_Id" Type="int" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE_NUMBER" Type="varchar" MaxLength="20" />
+          <Property Name="STREET" Type="varchar" MaxLength="40" />
+          <Property Name="CITY" Type="varchar" MaxLength="40" />
+          <Property Name="ADDRESS_STATE" Type="varchar" MaxLength="40" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.FacilityView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacilityView">
+          <Key>
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE_NUMBER" Type="varchar" MaxLength="20" />
+          <Property Name="STREET" Type="varchar" MaxLength="40" />
+          <Property Name="CITY" Type="varchar" MaxLength="40" />
+          <Property Name="ZIP" Type="varchar" MaxLength="10" />
+          <Property Name="Parent" Type="int" />
+          <Property Name="Parent_NAME" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.JobOrderView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="JobOrderView">
+          <Key>
+            <PropertyRef Name="TITLE" />
+            <PropertyRef Name="JO_START_DATE" />
+            <PropertyRef Name="JO_STATUS" />
+            <PropertyRef Name="Facility__Id" />
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="RATE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="JO_START_DATE" Type="date" Nullable="false" />
+          <Property Name="JO_STATUS" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="JO_DESCRIPTION" Type="char" MaxLength="400" />
+          <Property Name="Facility__Id" Type="int" Nullable="false" />
+          <Property Name="Facility_NAME" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.PhoneView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PhoneView">
+          <Key>
+            <PropertyRef Name="PHONE_NUMBER" />
+          </Key>
+          <Property Name="PHONE_NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="15" />
+          <Property Name="Owner__Id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.SubmissionView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SubmissionView">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="SUBMISSION_DATE" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="int" Nullable="false" />
+          <Property Name="LNAME" Type="varchar" MaxLength="30" />
+          <Property Name="FNAME" Type="varchar" MaxLength="30" />
+          <Property Name="Facility_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="JO_START_DATE" Type="date" />
+          <Property Name="SUBMISSION_DATE" Type="date" Nullable="false" />
+          <Property Name="RATE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="BILL_RATE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="JO_STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="TITLE" Type="varchar" MaxLength="40" />
+          <Property Name="JO_DESCRIPTION" Type="char" MaxLength="400" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CANSnatcher.dbo.UserView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserView">
+          <Key>
+            <PropertyRef Name="ULEVEL" />
+            <PropertyRef Name="FNAME" />
+            <PropertyRef Name="LNAME" />
+            <PropertyRef Name="_Id" />
+          </Key>
+          <Property Name="_Id" Type="int" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="nvarchar" MaxLength="128" />
+          <Property Name="ULEVEL" Type="int" Nullable="false" />
+          <Property Name="FNAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MNAME" Type="varchar" MaxLength="30" />
+          <Property Name="LNAME" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="AccessLog_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="AccessLog">
+              <PropertyRef Name="User__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Address_holder_Address">
+          <End Role="Street_Address" Type="Self.Street_Address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address_holder" Type="Self.Address_holder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street_Address">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Address_holder">
+              <PropertyRef Name="Address__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Address_holder_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Address_holder" Type="Self.Address_holder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Address_holder">
+              <PropertyRef Name="Owner__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Attribute_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Attribute" Type="Self.Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Attribute">
+              <PropertyRef Name="Candidate__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Candidate_holder_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="Candidate__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contact_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="Contact__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contact_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="ContactFor__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Email_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="Owner__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Facility_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <End Role="Facility1" Type="Self.Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Facility1">
+              <PropertyRef Name="Parent__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobOrder_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="JobOrder">
+              <PropertyRef Name="Facility__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Noted_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Noted__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notes_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Taker__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Person_Profile">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Phone_holder_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Phone_holder" Type="Self.Phone_holder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Phone_holder">
+              <PropertyRef Name="Owner__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Phone_owner_Phone">
+          <End Role="Phone" Type="Self.Phone" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Phone_holder" Type="Self.Phone_holder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Phone_holder">
+              <PropertyRef Name="Phone__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Settings_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Settings" Type="Self.Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="User__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Submission_JobOrder">
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobOrder">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="JobOrder__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Submission_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="SubmissionBy__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Facility">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_JobOrder">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="JobOrder">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Notes">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Person">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="_Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CandidateDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CandidateInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UniqueID__Id" Type="int" Mode="In" />
+          <Parameter Name="Identifier" Type="varchar" Mode="In" />
+          <Parameter Name="FName" Type="varchar" Mode="In" />
+          <Parameter Name="MName" Type="varchar" Mode="In" />
+          <Parameter Name="LName" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CandidateSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Value" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CandidateUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UniqueID__Id" Type="int" Mode="In" />
+          <Parameter Name="Identifier" Type="varchar" Mode="In" />
+          <Parameter Name="FName" Type="varchar" Mode="In" />
+          <Parameter Name="MName" Type="varchar" Mode="In" />
+          <Parameter Name="LName" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_STATE" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ContactDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ContactInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ContactSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Value" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ContactUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FacilityDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FacilityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UniqueID__Id" Type="int" Mode="In" />
+          <Parameter Name="Identifier" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Parent" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FacilitySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="value" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="FacilityUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UniqueID__Id" Type="int" Mode="In" />
+          <Parameter Name="Identifier" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Parent" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="PType" Type="varchar" Mode="In" />
+          <Parameter Name="Street" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Zip" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="MasterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UniqueID__Id" Type="int" Mode="In" />
+          <Parameter Name="Identifier" Type="varchar" Mode="In" />
+          <Parameter Name="FName" Type="varchar" Mode="In" />
+          <Parameter Name="MName" Type="varchar" Mode="In" />
+          <Parameter Name="LName" Type="varchar" Mode="In" />
+          <Parameter Name="ULevel" Type="int" Mode="In" />
+          <Parameter Name="StatementType" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SubmissionViewDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UserIdSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CANSnatcherModelStoreContainer">
+          <EntitySet Name="AccessLog" EntityType="Self.AccessLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address_holder" EntityType="Self.Address_holder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attribute" EntityType="Self.Attribute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobOrder" EntityType="Self.JobOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phone_holder" EntityType="Self.Phone_holder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street_Address" EntityType="Self.Street_Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Submission" EntityType="Self.Submission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UniqueID" EntityType="Self.UniqueID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressView" EntityType="Self.AddressView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AddressView].[STREET] AS [STREET], 
+    [AddressView].[CITY] AS [CITY], 
+    [AddressView].[ADDRESS_STATE] AS [ADDRESS_STATE], 
+    [AddressView].[ZIP] AS [ZIP], 
+    [AddressView].[Owner__Id] AS [Owner__Id]
+    FROM [dbo].[AddressView] AS [AddressView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CandidateView" EntityType="Self.CandidateView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CandidateView].[_Id] AS [_Id], 
+    [CandidateView].[FNAME] AS [FNAME], 
+    [CandidateView].[MNAME] AS [MNAME], 
+    [CandidateView].[LNAME] AS [LNAME], 
+    [CandidateView].[Email] AS [Email], 
+    [CandidateView].[Phone] AS [Phone], 
+    [CandidateView].[CAN_STATUS] AS [CAN_STATUS]
+    FROM [dbo].[CandidateView] AS [CandidateView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ContactView" EntityType="Self.ContactView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ContactView].[_Id] AS [_Id], 
+    [ContactView].[IDENTIFIER] AS [IDENTIFIER], 
+    [ContactView].[EMAIL] AS [EMAIL], 
+    [ContactView].[PHONE_NUMBER] AS [PHONE_NUMBER], 
+    [ContactView].[STREET] AS [STREET], 
+    [ContactView].[CITY] AS [CITY], 
+    [ContactView].[ADDRESS_STATE] AS [ADDRESS_STATE], 
+    [ContactView].[ZIP] AS [ZIP]
+    FROM [dbo].[ContactView] AS [ContactView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FacilityView" EntityType="Self.FacilityView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacilityView].[_Id] AS [_Id], 
+    [FacilityView].[NAME] AS [NAME], 
+    [FacilityView].[EMAIL] AS [EMAIL], 
+    [FacilityView].[PHONE_NUMBER] AS [PHONE_NUMBER], 
+    [FacilityView].[STREET] AS [STREET], 
+    [FacilityView].[CITY] AS [CITY], 
+    [FacilityView].[ZIP] AS [ZIP], 
+    [FacilityView].[Parent] AS [Parent], 
+    [FacilityView].[Parent_NAME] AS [Parent_NAME]
+    FROM [dbo].[FacilityView] AS [FacilityView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="JobOrderView" EntityType="Self.JobOrderView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [JobOrderView].[_Id] AS [_Id], 
+    [JobOrderView].[TITLE] AS [TITLE], 
+    [JobOrderView].[RATE] AS [RATE], 
+    [JobOrderView].[JO_START_DATE] AS [JO_START_DATE], 
+    [JobOrderView].[JO_STATUS] AS [JO_STATUS], 
+    [JobOrderView].[JO_DESCRIPTION] AS [JO_DESCRIPTION], 
+    [JobOrderView].[Facility__Id] AS [Facility__Id], 
+    [JobOrderView].[Facility_NAME] AS [Facility_NAME]
+    FROM [dbo].[JobOrderView] AS [JobOrderView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PhoneView" EntityType="Self.PhoneView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PhoneView].[PHONE_NUMBER] AS [PHONE_NUMBER], 
+    [PhoneView].[TYPE] AS [TYPE], 
+    [PhoneView].[Owner__Id] AS [Owner__Id]
+    FROM [dbo].[PhoneView] AS [PhoneView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SubmissionView" EntityType="Self.SubmissionView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SubmissionView].[UniqueID__Id] AS [UniqueID__Id], 
+    [SubmissionView].[LNAME] AS [LNAME], 
+    [SubmissionView].[FNAME] AS [FNAME], 
+    [SubmissionView].[Facility_NAME] AS [Facility_NAME], 
+    [SubmissionView].[JO_START_DATE] AS [JO_START_DATE], 
+    [SubmissionView].[SUBMISSION_DATE] AS [SUBMISSION_DATE], 
+    [SubmissionView].[RATE] AS [RATE], 
+    [SubmissionView].[BILL_RATE] AS [BILL_RATE], 
+    [SubmissionView].[JO_STATUS] AS [JO_STATUS], 
+    [SubmissionView].[TITLE] AS [TITLE], 
+    [SubmissionView].[JO_DESCRIPTION] AS [JO_DESCRIPTION]
+    FROM [dbo].[SubmissionView] AS [SubmissionView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserView" EntityType="Self.UserView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserView].[_Id] AS [_Id], 
+    [UserView].[IDENTIFIER] AS [IDENTIFIER], 
+    [UserView].[ULEVEL] AS [ULEVEL], 
+    [UserView].[FNAME] AS [FNAME], 
+    [UserView].[MNAME] AS [MNAME], 
+    [UserView].[LNAME] AS [LNAME]
+    FROM [dbo].[UserView] AS [UserView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="AccessLog_User" Association="Self.AccessLog_User">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="AccessLog" EntitySet="AccessLog" />
+          </AssociationSet>
+          <AssociationSet Name="Address_holder_Address" Association="Self.Address_holder_Address">
+            <End Role="Street_Address" EntitySet="Street_Address" />
+            <End Role="Address_holder" EntitySet="Address_holder" />
+          </AssociationSet>
+          <AssociationSet Name="Address_holder_UniqueID" Association="Self.Address_holder_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Address_holder" EntitySet="Address_holder" />
+          </AssociationSet>
+          <AssociationSet Name="Attribute_Candidate" Association="Self.Attribute_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="Attribute" EntitySet="Attribute" />
+          </AssociationSet>
+          <AssociationSet Name="Candidate_holder_Candidate" Association="Self.Candidate_holder_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="Submission" EntitySet="Submission" />
+          </AssociationSet>
+          <AssociationSet Name="Contact_Person" Association="Self.Contact_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="Contact_UniqueID" Association="Self.Contact_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="Email_UniqueID" Association="Self.Email_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="Facility_Facility" Association="Self.Facility_Facility">
+            <End Role="Facility" EntitySet="Facility" />
+            <End Role="Facility1" EntitySet="Facility" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="JobOrder_Facility" Association="Self.JobOrder_Facility">
+            <End Role="Facility" EntitySet="Facility" />
+            <End Role="JobOrder" EntitySet="JobOrder" />
+          </AssociationSet>
+          <AssociationSet Name="Noted_UniqueID" Association="Self.Noted_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="Notes_User" Association="Self.Notes_User">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="Person_Profile" Association="Self.Person_Profile">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="Phone_holder_UniqueID" Association="Self.Phone_holder_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Phone_holder" EntitySet="Phone_holder" />
+          </AssociationSet>
+          <AssociationSet Name="Phone_owner_Phone" Association="Self.Phone_owner_Phone">
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="Phone_holder" EntitySet="Phone_holder" />
+          </AssociationSet>
+          <AssociationSet Name="Settings_User" Association="Self.Settings_User">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
+          <AssociationSet Name="Submission_JobOrder" Association="Self.Submission_JobOrder">
+            <End Role="JobOrder" EntitySet="JobOrder" />
+            <End Role="Submission" EntitySet="Submission" />
+          </AssociationSet>
+          <AssociationSet Name="Submission_User" Association="Self.Submission_User">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Submission" EntitySet="Submission" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Facility" Association="Self.UniqueID_Facility">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Facility" EntitySet="Facility" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_JobOrder" Association="Self.UniqueID_JobOrder">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="JobOrder" EntitySet="JobOrder" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Notes" Association="Self.UniqueID_Notes">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Person" Association="Self.UniqueID_Person">
+            <End Role="UniqueID" EntitySet="UniqueID" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="User_Person" Association="Self.User_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CANSnatcherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessLog">
+          <Key>
+            <PropertyRef Name="C_Id" />
+            <PropertyRef Name="timestamp" />
+            <PropertyRef Name="User__Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="User__Id" Type="Int32" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.AccessLog_User" FromRole="AccessLog" ToRole="AppUser" />
+        </EntityType>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Person__Id" />
+          </Key>
+          <Property Name="Person__Id" Type="Int32" Nullable="false" />
+          <Property Name="ULEVEL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccessLogs" Relationship="Self.AccessLog_User" FromRole="AppUser" ToRole="AccessLog" />
+          <NavigationProperty Name="Notes" Relationship="Self.Notes_User" FromRole="AppUser" ToRole="Notes" />
+          <NavigationProperty Name="Settings" Relationship="Self.Settings_User" FromRole="AppUser" ToRole="Settings" />
+          <NavigationProperty Name="Submissions" Relationship="Self.Submission_User" FromRole="AppUser" ToRole="Submission" />
+          <NavigationProperty Name="Person" Relationship="Self.User_Person" FromRole="AppUser" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="C_Id" />
+            <PropertyRef Name="Candidate__Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ATT_TYPE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUB_TYPE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Candidate" Relationship="Self.Attribute_Candidate" FromRole="Attribute" ToRole="Candidate" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Person__Id" />
+          </Key>
+          <Property Name="Person__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CAN_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Attributes" Relationship="Self.Attribute_Candidate" FromRole="Candidate" ToRole="Attribute" />
+          <NavigationProperty Name="Submissions" Relationship="Self.Candidate_holder_Candidate" FromRole="Candidate" ToRole="Submission" />
+          <NavigationProperty Name="Person" Relationship="Self.Person_Profile" FromRole="Candidate" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contact__Id" Type="Int32" Nullable="false" />
+          <Property Name="ContactFor__Id" Type="Int32" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Person" Relationship="Self.Contact_Person" FromRole="Contact" ToRole="Person" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.Contact_UniqueID" FromRole="Contact" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="C_Id" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Owner__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="EMAIL1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.Email_UniqueID" FromRole="Email" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent__Id" Type="Int32" />
+          <NavigationProperty Name="Facility1" Relationship="Self.Facility_Facility" FromRole="Facility" ToRole="Facility1" />
+          <NavigationProperty Name="Facility2" Relationship="Self.Facility_Facility" FromRole="Facility1" ToRole="Facility" />
+          <NavigationProperty Name="JobOrders" Relationship="Self.JobOrder_Facility" FromRole="Facility" ToRole="JobOrder" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.UniqueID_Facility" FromRole="Facility" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="JobOrder">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TITLE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RATE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="JO_START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="JO_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JO_DESCRIPTION" Type="String" MaxLength="400" FixedLength="true" Unicode="false" />
+          <Property Name="Facility__Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="Self.JobOrder_Facility" FromRole="JobOrder" ToRole="Facility" />
+          <NavigationProperty Name="Submissions" Relationship="Self.Submission_JobOrder" FromRole="JobOrder" ToRole="Submission" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.UniqueID_JobOrder" FromRole="JobOrder" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="Taker__Id" />
+            <PropertyRef Name="Noted__Id" />
+            <PropertyRef Name="SHARED" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="Taker__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Noted__Id" Type="Int32" Nullable="false" />
+          <Property Name="NOTE1" Type="String" MaxLength="400" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SHARED" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.Notes_User" FromRole="Notes" ToRole="AppUser" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.Noted_UniqueID" FromRole="Notes" ToRole="UniqueID" />
+          <NavigationProperty Name="UniqueID1" Relationship="Self.UniqueID_Notes" FromRole="Notes" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AppUser" Relationship="Self.User_Person" FromRole="Person" ToRole="AppUser" />
+          <NavigationProperty Name="Candidate" Relationship="Self.Person_Profile" FromRole="Person" ToRole="Candidate" />
+          <NavigationProperty Name="Contacts" Relationship="Self.Contact_Person" FromRole="Person" ToRole="Contact" />
+          <NavigationProperty Name="UniqueID" Relationship="Self.UniqueID_Person" FromRole="Person" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UniqueIDs" Relationship="Self.Phone_holder" FromRole="Phone" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="C_Id" />
+            <PropertyRef Name="User__Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User__Id" Type="Int32" Nullable="false" />
+          <Property Name="SETTING1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SETTING_VALUE" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AppUser" Relationship="Self.Settings_User" FromRole="Settings" ToRole="AppUser" />
+        </EntityType>
+        <EntityType Name="Street_Address">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_STATE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UniqueIDs" Relationship="Self.Address_holder" FromRole="Street_Address" ToRole="UniqueID" />
+        </EntityType>
+        <EntityType Name="Submission">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="JobOrder__Id" />
+            <PropertyRef Name="Candidate__Id" />
+            <PropertyRef Name="SubmissionBy__Id" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="JobOrder__Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidate__Id" Type="Int32" Nullable="false" />
+          <Property Name="SubmissionBy__Id" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="SUBMISSION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BILL_RATE" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="AppUser" Relationship="Self.Submission_User" FromRole="Submission" ToRole="AppUser" />
+          <NavigationProperty Name="Candidate" Relationship="Self.Candidate_holder_Candidate" FromRole="Submission" ToRole="Candidate" />
+          <NavigationProperty Name="JobOrder" Relationship="Self.Submission_JobOrder" FromRole="Submission" ToRole="JobOrder" />
+        </EntityType>
+        <EntityType Name="UniqueID">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IDENTIFIER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Self.Contact_UniqueID" FromRole="UniqueID" ToRole="Contact" />
+          <NavigationProperty Name="Emails" Relationship="Self.Email_UniqueID" FromRole="UniqueID" ToRole="Email" />
+          <NavigationProperty Name="Facility" Relationship="Self.UniqueID_Facility" FromRole="UniqueID" ToRole="Facility" />
+          <NavigationProperty Name="JobOrder" Relationship="Self.UniqueID_JobOrder" FromRole="UniqueID" ToRole="JobOrder" />
+          <NavigationProperty Name="Notes" Relationship="Self.Noted_UniqueID" FromRole="UniqueID" ToRole="Notes" />
+          <NavigationProperty Name="Notes1" Relationship="Self.UniqueID_Notes" FromRole="UniqueID" ToRole="Notes" />
+          <NavigationProperty Name="Person" Relationship="Self.UniqueID_Person" FromRole="UniqueID" ToRole="Person" />
+          <NavigationProperty Name="Street_Address" Relationship="Self.Address_holder" FromRole="UniqueID" ToRole="Street_Address" />
+          <NavigationProperty Name="Phones" Relationship="Self.Phone_holder" FromRole="UniqueID" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="AddressView">
+          <Key>
+            <PropertyRef Name="STREET" />
+            <PropertyRef Name="CITY" />
+            <PropertyRef Name="ZIP" />
+            <PropertyRef Name="Owner__Id" />
+          </Key>
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_STATE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Owner__Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidateView">
+          <Key>
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="FNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CAN_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ContactView">
+          <Key>
+            <PropertyRef Name="C_Id" />
+            <PropertyRef Name="IDENTIFIER" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_STATE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FacilityView">
+          <Key>
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Parent" Type="Int32" />
+          <Property Name="Parent_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobOrderView">
+          <Key>
+            <PropertyRef Name="TITLE" />
+            <PropertyRef Name="JO_START_DATE" />
+            <PropertyRef Name="JO_STATUS" />
+            <PropertyRef Name="Facility__Id" />
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RATE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="JO_START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="JO_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JO_DESCRIPTION" Type="String" MaxLength="400" FixedLength="true" Unicode="false" />
+          <Property Name="Facility__Id" Type="Int32" Nullable="false" />
+          <Property Name="Facility_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PhoneView">
+          <Key>
+            <PropertyRef Name="PHONE_NUMBER" />
+          </Key>
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Owner__Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SubmissionView">
+          <Key>
+            <PropertyRef Name="UniqueID__Id" />
+            <PropertyRef Name="SUBMISSION_DATE" />
+          </Key>
+          <Property Name="UniqueID__Id" Type="Int32" Nullable="false" />
+          <Property Name="LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Facility_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="JO_START_DATE" Type="DateTime" Precision="0" />
+          <Property Name="SUBMISSION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RATE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="BILL_RATE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="JO_STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="JO_DESCRIPTION" Type="String" MaxLength="400" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserView">
+          <Key>
+            <PropertyRef Name="ULEVEL" />
+            <PropertyRef Name="FNAME" />
+            <PropertyRef Name="LNAME" />
+            <PropertyRef Name="C_Id" />
+          </Key>
+          <Property Name="C_Id" Type="Int32" Nullable="false" />
+          <Property Name="IDENTIFIER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ULEVEL" Type="Int32" Nullable="false" />
+          <Property Name="FNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="AccessLog_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessLog" Type="Self.AccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="AccessLog">
+              <PropertyRef Name="User__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Notes_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Taker__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Settings_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Settings" Type="Self.Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="User__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Submission_User">
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="SubmissionBy__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="Person__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Attribute_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Attribute" Type="Self.Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Attribute">
+              <PropertyRef Name="Candidate__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Candidate_holder_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="Candidate__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Person_Profile">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="Person__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contact_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="Contact__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Contact_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="ContactFor__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Email_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="Owner__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Facility_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <End Role="Facility1" Type="Self.Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Facility1">
+              <PropertyRef Name="Parent__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobOrder_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="JobOrder">
+              <PropertyRef Name="Facility__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Facility">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Submission_JobOrder">
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobOrder">
+              <PropertyRef Name="UniqueID__Id" />
+            </Principal>
+            <Dependent Role="Submission">
+              <PropertyRef Name="JobOrder__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_JobOrder">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="JobOrder" Type="Self.JobOrder" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="JobOrder">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Noted_UniqueID">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Noted__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Notes">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UniqueID_Person">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UniqueID">
+              <PropertyRef Name="C_Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="UniqueID__Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Address_holder">
+          <End Role="Street_Address" Type="Self.Street_Address" Multiplicity="*" />
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="*" />
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="Phone_holder">
+          <End Role="UniqueID" Type="Self.UniqueID" Multiplicity="*" />
+          <End Role="Phone" Type="Self.Phone" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CANSnatcherEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessLogs" EntityType="Self.AccessLog" />
+          <EntitySet Name="AppUsers" EntityType="Self.AppUser" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Attributes" EntityType="Self.Attribute" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Emails" EntityType="Self.Email" />
+          <EntitySet Name="Facilities" EntityType="Self.Facility" />
+          <EntitySet Name="JobOrders" EntityType="Self.JobOrder" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Phones" EntityType="Self.Phone" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="Street_Address" EntityType="Self.Street_Address" />
+          <EntitySet Name="Submissions" EntityType="Self.Submission" />
+          <EntitySet Name="UniqueIDs" EntityType="Self.UniqueID" />
+          <EntitySet Name="AddressViews" EntityType="Self.AddressView" />
+          <EntitySet Name="CandidateViews" EntityType="Self.CandidateView" />
+          <EntitySet Name="ContactViews" EntityType="Self.ContactView" />
+          <EntitySet Name="FacilityViews" EntityType="Self.FacilityView" />
+          <EntitySet Name="JobOrderViews" EntityType="Self.JobOrderView" />
+          <EntitySet Name="PhoneViews" EntityType="Self.PhoneView" />
+          <EntitySet Name="SubmissionViews" EntityType="Self.SubmissionView" />
+          <EntitySet Name="UserViews" EntityType="Self.UserView" />
+          <AssociationSet Name="AccessLog_User" Association="Self.AccessLog_User">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="AccessLog" EntitySet="AccessLogs" />
+          </AssociationSet>
+          <AssociationSet Name="Notes_User" Association="Self.Notes_User">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="Settings_User" Association="Self.Settings_User">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
+          <AssociationSet Name="Submission_User" Association="Self.Submission_User">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="Submission" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="User_Person" Association="Self.User_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="AppUser" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="Attribute_Candidate" Association="Self.Attribute_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="Attribute" EntitySet="Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="Candidate_holder_Candidate" Association="Self.Candidate_holder_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="Submission" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="Person_Profile" Association="Self.Person_Profile">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="Contact_Person" Association="Self.Contact_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="Contact_UniqueID" Association="Self.Contact_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Contact" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="Email_UniqueID" Association="Self.Email_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="Facility_Facility" Association="Self.Facility_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="Facility1" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="JobOrder_Facility" Association="Self.JobOrder_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="JobOrder" EntitySet="JobOrders" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Facility" Association="Self.UniqueID_Facility">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Facility" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="Submission_JobOrder" Association="Self.Submission_JobOrder">
+            <End Role="JobOrder" EntitySet="JobOrders" />
+            <End Role="Submission" EntitySet="Submissions" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_JobOrder" Association="Self.UniqueID_JobOrder">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="JobOrder" EntitySet="JobOrders" />
+          </AssociationSet>
+          <AssociationSet Name="Noted_UniqueID" Association="Self.Noted_UniqueID">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Notes" Association="Self.UniqueID_Notes">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="UniqueID_Person" Association="Self.UniqueID_Person">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="Address_holder" Association="Self.Address_holder">
+            <End Role="Street_Address" EntitySet="Street_Address" />
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="Phone_holder" Association="Self.Phone_holder">
+            <End Role="UniqueID" EntitySet="UniqueIDs" />
+            <End Role="Phone" EntitySet="Phones" />
+          </AssociationSet>
+          <FunctionImport Name="CandidateDelete">
+          <Parameter Name="p_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CandidateInsert">
+            <Parameter Name="UniqueID__Id" Mode="In" Type="Int32" />
+            <Parameter Name="Identifier" Mode="In" Type="String" />
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="MName" Mode="In" Type="String" />
+            <Parameter Name="LName" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CandidateSelect" ReturnType="Collection(CANSnatcherModel.CandidateSelect_Result)">
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Value" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CandidateUpdate">
+            <Parameter Name="UniqueID__Id" Mode="In" Type="Int32" />
+            <Parameter Name="Identifier" Mode="In" Type="String" />
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="MName" Mode="In" Type="String" />
+            <Parameter Name="LName" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_STATE" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ContactDelete">
+          <Parameter Name="p_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ContactInsert">
+            <Parameter Name="p_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ContactSelect" ReturnType="Collection(CANSnatcherModel.ContactSelect_Result)">
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Value" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ContactUpdate">
+            <Parameter Name="p_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FacilityDelete">
+          <Parameter Name="p_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FacilityInsert">
+            <Parameter Name="UniqueID__Id" Mode="In" Type="Int32" />
+            <Parameter Name="Identifier" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Parent" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FacilitySelect" ReturnType="Collection(CANSnatcherModel.FacilitySelect_Result)">
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="value" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FacilityUpdate">
+            <Parameter Name="UniqueID__Id" Mode="In" Type="Int32" />
+            <Parameter Name="Identifier" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Parent" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="PType" Mode="In" Type="String" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Zip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MasterUser" ReturnType="Collection(CANSnatcherModel.MasterUser_Result)">
+            <Parameter Name="UniqueID__Id" Mode="In" Type="Int32" />
+            <Parameter Name="Identifier" Mode="In" Type="String" />
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="MName" Mode="In" Type="String" />
+            <Parameter Name="LName" Mode="In" Type="String" />
+            <Parameter Name="ULevel" Mode="In" Type="Int32" />
+            <Parameter Name="StatementType" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UserIdSearch" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SubmissionViewDelete">
+            <Parameter Name="p_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="CandidateSelect_Result">
+          <Property Type="Int32" Name="C_Id" Nullable="true" />
+          <Property Type="String" Name="FNAME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MNAME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="LNAME" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CAN_STATUS" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PHONE_NUMBER" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="STREET" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ADDRESS_STATE" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="ContactSelect_Result">
+          <Property Type="Int32" Name="C_Id" Nullable="false" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PHONE_NUMBER" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TYPE" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="STREET" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ADDRESS_STATE" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="FacilitySelect_Result">
+          <Property Type="Int32" Name="C_Id" Nullable="true" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="60" />
+          <Property Type="Int32" Name="Parent__Id" Nullable="true" />
+          <Property Type="String" Name="Parent_NAME" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PHONE_NUMBER" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="STREET" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ADDRESS_STATE" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="ZIP" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="MasterUser_Result">
+          <Property Type="Int32" Name="C_Id" Nullable="true" />
+          <Property Type="String" Name="First_Name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="M" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="level" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CANSnatcherModelStoreContainer" CdmEntityContainer="CANSnatcherEntities">
+          <EntitySetMapping Name="AccessLogs">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AccessLog">
+              <MappingFragment StoreEntitySet="AccessLog">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="User__Id" ColumnName="User__Id" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="Person__Id" ColumnName="Person__Id" />
+                <ScalarProperty Name="ULEVEL" ColumnName="ULEVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attributes">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Attribute">
+              <MappingFragment StoreEntitySet="Attribute">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="Candidate__Id" ColumnName="Candidate__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="ATT_TYPE" ColumnName="ATT_TYPE" />
+                <ScalarProperty Name="SUB_TYPE" ColumnName="SUB_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="Person__Id" ColumnName="Person__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="CAN_STATUS" ColumnName="CAN_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="Contact__Id" ColumnName="Contact__Id" />
+                <ScalarProperty Name="ContactFor__Id" ColumnName="ContactFor__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="Owner__Id" ColumnName="Owner__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="EMAIL1" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Parent__Id" ColumnName="Parent__Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobOrders">
+            <EntityTypeMapping TypeName="CANSnatcherModel.JobOrder">
+              <MappingFragment StoreEntitySet="JobOrder">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="JO_START_DATE" ColumnName="JO_START_DATE" />
+                <ScalarProperty Name="JO_STATUS" ColumnName="JO_STATUS" />
+                <ScalarProperty Name="JO_DESCRIPTION" ColumnName="JO_DESCRIPTION" />
+                <ScalarProperty Name="Facility__Id" ColumnName="Facility__Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="Taker__Id" ColumnName="Taker__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Noted__Id" ColumnName="Noted__Id" />
+                <ScalarProperty Name="NOTE1" ColumnName="NOTE" />
+                <ScalarProperty Name="SHARED" ColumnName="SHARED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="MNAME" ColumnName="MNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phones">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Phone">
+              <MappingFragment StoreEntitySet="Phone">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="User__Id" ColumnName="User__Id" />
+                <ScalarProperty Name="SETTING1" ColumnName="SETTING" />
+                <ScalarProperty Name="SETTING_VALUE" ColumnName="SETTING_VALUE" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street_Address">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Street_Address">
+              <MappingFragment StoreEntitySet="Street_Address">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Submissions">
+            <EntityTypeMapping TypeName="CANSnatcherModel.Submission">
+              <MappingFragment StoreEntitySet="Submission">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="JobOrder__Id" ColumnName="JobOrder__Id" />
+                <ScalarProperty Name="Candidate__Id" ColumnName="Candidate__Id" />
+                <ScalarProperty Name="SubmissionBy__Id" ColumnName="SubmissionBy__Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="SUBMISSION_DATE" ColumnName="SUBMISSION_DATE" />
+                <ScalarProperty Name="BILL_RATE" ColumnName="BILL_RATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniqueIDs">
+            <EntityTypeMapping TypeName="CANSnatcherModel.UniqueID">
+              <MappingFragment StoreEntitySet="UniqueID">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="IDENTIFIER" ColumnName="IDENTIFIER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.AddressView">
+              <MappingFragment StoreEntitySet="AddressView">
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="Owner__Id" ColumnName="Owner__Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.CandidateView">
+              <MappingFragment StoreEntitySet="CandidateView">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="MNAME" ColumnName="MNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CAN_STATUS" ColumnName="CAN_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.ContactView">
+              <MappingFragment StoreEntitySet="ContactView">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="IDENTIFIER" ColumnName="IDENTIFIER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.FacilityView">
+              <MappingFragment StoreEntitySet="FacilityView">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Parent_NAME" ColumnName="Parent_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobOrderViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.JobOrderView">
+              <MappingFragment StoreEntitySet="JobOrderView">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="JO_START_DATE" ColumnName="JO_START_DATE" />
+                <ScalarProperty Name="JO_STATUS" ColumnName="JO_STATUS" />
+                <ScalarProperty Name="JO_DESCRIPTION" ColumnName="JO_DESCRIPTION" />
+                <ScalarProperty Name="Facility__Id" ColumnName="Facility__Id" />
+                <ScalarProperty Name="Facility_NAME" ColumnName="Facility_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.PhoneView">
+              <MappingFragment StoreEntitySet="PhoneView">
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="Owner__Id" ColumnName="Owner__Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubmissionViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.SubmissionView">
+              <MappingFragment StoreEntitySet="SubmissionView">
+                <ScalarProperty Name="UniqueID__Id" ColumnName="UniqueID__Id" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="Facility_NAME" ColumnName="Facility_NAME" />
+                <ScalarProperty Name="JO_START_DATE" ColumnName="JO_START_DATE" />
+                <ScalarProperty Name="SUBMISSION_DATE" ColumnName="SUBMISSION_DATE" />
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="BILL_RATE" ColumnName="BILL_RATE" />
+                <ScalarProperty Name="JO_STATUS" ColumnName="JO_STATUS" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="JO_DESCRIPTION" ColumnName="JO_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserViews">
+            <EntityTypeMapping TypeName="CANSnatcherModel.UserView">
+              <MappingFragment StoreEntitySet="UserView">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="IDENTIFIER" ColumnName="IDENTIFIER" />
+                <ScalarProperty Name="ULEVEL" ColumnName="ULEVEL" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="MNAME" ColumnName="MNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Address_holder" TypeName="CANSnatcherModel.Address_holder" StoreEntitySet="Address_holder">
+            <EndProperty Name="Street_Address">
+              <ScalarProperty Name="C_Id" ColumnName="Address__Id" />
+            </EndProperty>
+            <EndProperty Name="UniqueID">
+              <ScalarProperty Name="C_Id" ColumnName="Owner__Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="CANSnatcherModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Phone_holder" TypeName="CANSnatcherModel.Phone_holder" StoreEntitySet="Phone_holder">
+            <EndProperty Name="UniqueID">
+              <ScalarProperty Name="C_Id" ColumnName="Owner__Id" />
+            </EndProperty>
+            <EndProperty Name="Phone">
+              <ScalarProperty Name="C_Id" ColumnName="Phone__Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="CandidateDelete" FunctionName="CANSnatcherModel.Store.CandidateDelete" />
+          <FunctionImportMapping FunctionImportName="CandidateInsert" FunctionName="CANSnatcherModel.Store.CandidateInsert" />
+          <FunctionImportMapping FunctionImportName="CandidateSelect" FunctionName="CANSnatcherModel.Store.CandidateSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CANSnatcherModel.CandidateSelect_Result">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="MNAME" ColumnName="MNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="CAN_STATUS" ColumnName="CAN_STATUS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CandidateUpdate" FunctionName="CANSnatcherModel.Store.CandidateUpdate" />
+          <FunctionImportMapping FunctionImportName="ContactDelete" FunctionName="CANSnatcherModel.Store.ContactDelete" />
+          <FunctionImportMapping FunctionImportName="ContactInsert" FunctionName="CANSnatcherModel.Store.ContactInsert" />
+          <FunctionImportMapping FunctionImportName="ContactSelect" FunctionName="CANSnatcherModel.Store.ContactSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CANSnatcherModel.ContactSelect_Result">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ContactUpdate" FunctionName="CANSnatcherModel.Store.ContactUpdate" />
+          <FunctionImportMapping FunctionImportName="FacilityDelete" FunctionName="CANSnatcherModel.Store.FacilityDelete" />
+          <FunctionImportMapping FunctionImportName="FacilityInsert" FunctionName="CANSnatcherModel.Store.FacilityInsert" />
+          <FunctionImportMapping FunctionImportName="FacilitySelect" FunctionName="CANSnatcherModel.Store.FacilitySelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CANSnatcherModel.FacilitySelect_Result">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Parent__Id" ColumnName="Parent__Id" />
+                <ScalarProperty Name="Parent_NAME" ColumnName="Parent NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ADDRESS_STATE" ColumnName="ADDRESS_STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FacilityUpdate" FunctionName="CANSnatcherModel.Store.FacilityUpdate" />
+          <FunctionImportMapping FunctionImportName="MasterUser" FunctionName="CANSnatcherModel.Store.MasterUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CANSnatcherModel.MasterUser_Result">
+                <ScalarProperty Name="C_Id" ColumnName="_Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="level" ColumnName="level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UserIdSearch" FunctionName="CANSnatcherModel.Store.UserIdSearch" />
+          <FunctionImportMapping FunctionImportName="SubmissionViewDelete" FunctionName="CANSnatcherModel.Store.SubmissionViewDelete" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

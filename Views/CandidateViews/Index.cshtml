@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CANSnatcher.CandidateView>
+
+@{
+    ViewBag.Title = "Candidates";
+    Layout = "~/Views/Working/_working_layout.cshtml";
+}
+
+<br />
+<br />
+<p>
+    <button class="btn-link" onclick="location.href='@Url.Action("Create", "CandidateSelect_Result", null, null)'" >New Candidate</button>
+</p>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CAN_STATUS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr >
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.FNAME)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.MNAME)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.LNAME)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td onclick="location.href='@Url.Action("Edit", "CandidateSelect_Result", new {id = item.C_Id}, null)'">
+            @Html.DisplayFor(modelItem => item.CAN_STATUS)
+        </td>
+        <td>
+            <input type="button" class="btn-default btn" value="Submit to Job" onclick="location.href='@Url.Action("Create", "Submissions", new {can = item.C_Id, jo = 0 })'" />
+        </td>
+    </tr>
+}
+
+</table>
